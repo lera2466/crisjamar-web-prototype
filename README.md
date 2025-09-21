@@ -1,4 +1,4 @@
-# Astro Starter Kit: Basics
+# crisjamar-web-prototype
 
 ```sh
 pnpm create astro@latest -- --template basics
