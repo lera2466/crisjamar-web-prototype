@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths(){
+    const products = await getCollection('products');
+    return products.map((product) => ({
+        params: { slug: product.slug },
+        props: { product },
+    }));
+}
+
+const {product} = Astro.props;
+const {body, slug, data} = product;
+const {name, description, price, img} = data;
+---
+
+<Layout title="">
+  <h1 class="text-center text-7xl font-extrabold">
+    Detalle de <dev class="block">{name}</dev>
+  </h1>
+
+  <section>
+    <div class="px-4 mx-auto max-w-screen-xl">
+      <div class="grid gap-6 md:grid-cols-2">
+        <article class="card">
+          <img src={img} alt={name} class="image" />
+        </article>
+      </div>
+    </div>
+  </section>

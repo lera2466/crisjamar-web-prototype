@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+
+const { product } = Astro.props;
+const { slug, data } = product;
+const { name, description, price, img } = data;
+---
+
+<article class="card">
+  <a href={`/products/${slug}`} style="display:block; text-decoration:none; color:inherit;">
+    <img src={img} alt={name} class="image" />
+    <div class="body">
+      <h3 class="title">{name}</h3>
+      <p class="price">${price}</p>
+      <p class="description">{description}</p>
+    </div>
+  </a>
+</article>
+
+<style>
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.15s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+  }
+  .image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #f3f3f3;
+  }
+  .body {
+    padding: 0.75rem;
+  }
+  .title {
+    font-size: 1rem;
+    margin: 0 0 0.25rem;
+    color: black;
+    font-weight: bold
+  }
+  .price {
+    font-weight: bold;
+    color: #065f46;
+    margin: 0.25rem 0;
+  }
+  .description {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+  }
+</style>
